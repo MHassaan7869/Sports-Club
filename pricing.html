@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sport Club - Pricing</title>
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background-color: #333333;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .btn-request {
+      background-color: #d4e600;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 25px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background-color: #444444;
+      padding: 80px 60px;
+      text-align: center;
+      color: white;
+    }
+
+    .hero p.eyebrow {
+      font-size: 13px;
+      color: #cccccc;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #d4e600;
+    }
+
+    .hero p.sub {
+      font-size: 15px;
+      color: #cccccc;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* PRICING CARDS SECTION */
+    .pricing {
+      padding: 70px 60px;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+
+    .pricing h2 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .pricing p.sub {
+      font-size: 15px;
+      color: #555555;
+      margin-bottom: 50px;
+    }
+
+    .cards-row {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    /* SINGLE CARD */
+    .card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 40px 30px;
+      width: 260px;
+      text-align: center;
+    }
+
+    .card.popular {
+      background-color: #333333;
+      color: white;
+    }
+
+    .card-label {
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #777777;
+      margin-bottom: 10px;
+    }
+
+    .card.popular .card-label {
+      color: #d4e600;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .card .price {
+      font-size: 48px;
+      font-weight: bold;
+      color: #d4e600;
+      margin-bottom: 5px;
+    }
+
+    .card .price span {
+      font-size: 18px;
+      font-weight: normal;
+      color: #aaaaaa;
+    }
+
+    .card .per {
+      font-size: 13px;
+      color: #aaaaaa;
+      margin-bottom: 25px;
+    }
+
+    .card .popular .per {
+      color: #aaaaaa;
+    }
+
+    /* DIVIDER LINE */
+    .divider {
+      border: none;
+      border-top: 1px solid #eeeeee;
+      margin: 20px 0;
+    }
+
+    .card.popular .divider {
+      border-top: 1px solid #555555;
+    }
+
+    /* FEATURES LIST */
+    .features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px 0;
+      text-align: left;
+    }
+
+    .features li {
+      font-size: 14px;
+      color: #555555;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .card.popular .features li {
+      color: #cccccc;
+      border-bottom: 1px solid #444444;
+    }
+
+    .features li span {
+      margin-right: 8px;
+    }
+
+    /* BUTTONS */
+    .btn-card {
+      width: 100%;
+      padding: 12px 0;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 25px;
+      border: 2px solid #333333;
+      background-color: white;
+      color: #333333;
+      cursor: pointer;
+    }
+
+    .btn-card.yellow {
+      background-color: #d4e600;
+      border: 2px solid #d4e600;
+      color: black;
+    }
+
+    /* POPULAR BADGE */
+    .badge {
+      display: inline-block;
+      background-color: #d4e600;
+      color: black;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+    }
+
+    /* COMPARISON TABLE */
+    .comparison {
+      padding: 70px 100px;
+      background-color: white;
+    }
+
+    .comparison h2 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .comparison p.sub {
+      font-size: 15px;
+      color: #555555;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table th {
+      background-color: #333333;
+      color: white;
+      padding: 15px 20px;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    table th:first-child {
+      text-align: left;
+    }
+
+    table td {
+      padding: 14px 20px;
+      font-size: 14px;
+      color: #444444;
+      border-bottom: 1px solid #eeeeee;
+      text-align: center;
+    }
+
+    table td:first-child {
+      text-align: left;
+      font-weight: bold;
+    }
+
+    table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* FAQ SECTION */
+    .faq {
+      padding: 70px 100px;
+      background-color: #f5f5f5;
+    }
+
+    .faq h2 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .faq p.sub {
+      font-size: 15px;
+      color: #555555;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .faq-row {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .faq-card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 25px;
+      width: 42%;
+    }
+
+    .faq-card h4 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #222222;
+    }
+
+    .faq-card p {
+      font-size: 14px;
+      color: #555555;
+      line-height: 1.6;
+    }
+
+    /* CONTACT BANNER */
+    .contact-banner {
+      background-color: #d4e600;
+      padding: 50px 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .contact-banner h2 {
+      font-size: 28px;
+      font-weight: bold;
+      color: black;
+    }
+
+    .contact-banner p {
+      font-size: 14px;
+      color: #444444;
+      margin-top: 6px;
+    }
+
+    .btn-dark {
+      background-color: #333333;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: #222222;
+      color: #aaaaaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="logo">🎾 Sport Club</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Coaches</a></li>
+      <li><a href="#" style="color:#d4e600;">Pricing</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="btn-request">Request a call</button>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="eyebrow">OUR PLANS</p>
+    <h1>Simple & Clear <span>Pricing</span></h1>
+    <p class="sub">
+      Choose the plan that fits your goals. No hidden fees,
+      no surprises. Cancel any time you want.
+    </p>
+  </div>
+
+  <!-- PRICING CARDS -->
+  <div class="pricing">
+    <h2>Choose Your Plan</h2>
+    <p class="sub">All plans include access to our facilities and basic coaching.</p>
+
+    <div class="cards-row">
+
+      <!-- BASIC -->
+      <div class="card">
+        <p class="card-label">STARTER</p>
+        <h3>Basic</h3>
+        <div class="price">$19<span>/mo</span></div>
+        <p class="per">Billed monthly</p>
+        <hr class="divider" />
+        <ul class="features">
+          <li><span>✅</span> Access to gym</li>
+          <li><span>✅</span> 2 group classes/week</li>
+          <li><span>✅</span> Basic fitness plan</li>
+          <li><span>❌</span> Personal coach</li>
+          <li><span>❌</span> Diet consultation</li>
+          <li><span>❌</span> Priority booking</li>
+        </ul>
+        <button class="btn-card">Get Started</button>
+      </div>
+
+      <!-- PRO (POPULAR) -->
+      <div class="card popular">
+        <div class="badge">⭐ Most Popular</div>
+        <p class="card-label">RECOMMENDED</p>
+        <h3>Pro</h3>
+        <div class="price">$49<span>/mo</span></div>
+        <p class="per">Billed monthly</p>
+        <hr class="divider" />
+        <ul class="features">
+          <li><span>✅</span> Access to gym</li>
+          <li><span>✅</span> Unlimited group classes</li>
+          <li><span>✅</span> Full fitness plan</li>
+          <li><span>✅</span> 1 personal coach session/week</li>
+          <li><span>✅</span> Diet consultation</li>
+          <li><span>❌</span> Priority booking</li>
+        </ul>
+        <button class="btn-card yellow">Get Started</button>
+      </div>
+
+      <!-- ELITE -->
+      <div class="card">
+        <p class="card-label">PREMIUM</p>
+        <h3>Elite</h3>
+        <div class="price">$89<span>/mo</span></div>
+        <p class="per">Billed monthly</p>
+        <hr class="divider" />
+        <ul class="features">
+          <li><span>✅</span> Access to gym</li>
+          <li><span>✅</span> Unlimited group classes</li>
+          <li><span>✅</span> Custom fitness plan</li>
+          <li><span>✅</span> Unlimited coach sessions</li>
+          <li><span>✅</span> Diet consultation</li>
+          <li><span>✅</span> Priority booking</li>
+        </ul>
+        <button class="btn-card">Get Started</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="comparison">
+    <h2>Plan Comparison</h2>
+    <p class="sub">See exactly what is included in each plan.</p>
+
+    <table>
+      <tr>
+        <th>Feature</th>
+        <th>Basic</th>
+        <th>Pro</th>
+        <th>Elite</th>
+      </tr>
+      <tr>
+        <td>Gym Access</td>
+        <td>✅</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>Group Classes</td>
+        <td>2 / week</td>
+        <td>Unlimited</td>
+        <td>Unlimited</td>
+      </tr>
+      <tr>
+        <td>Personal Coach</td>
+        <td>❌</td>
+        <td>1 / week</td>
+        <td>Unlimited</td>
+      </tr>
+      <tr>
+        <td>Fitness Plan</td>
+        <td>Basic</td>
+        <td>Full</td>
+        <td>Custom</td>
+      </tr>
+      <tr>
+        <td>Diet Consultation</td>
+        <td>❌</td>
+        <td>✅</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>Priority Booking</td>
+        <td>❌</td>
+        <td>❌</td>
+        <td>✅</td>
+      </tr>
+      <tr>
+        <td>Monthly Price</td>
+        <td>$19</td>
+        <td>$49</td>
+        <td>$89</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- FAQ SECTION -->
+  <div class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <p class="sub">Have questions? We have answers.</p>
+
+    <div class="faq-row">
+
+      <div class="faq-card">
+        <h4>Can I cancel my plan anytime?</h4>
+        <p>Yes, you can cancel your membership at any time. There are no long-term contracts or cancellation fees.</p>
+      </div>
+
+      <div class="faq-card">
+        <h4>Can I upgrade my plan later?</h4>
+        <p>Absolutely! You can upgrade or downgrade your plan at any time from your account settings.</p>
+      </div>
+
+      <div class="faq-card">
+        <h4>Is there a free trial?</h4>
+        <p>We offer a 7-day free trial for new members. No credit card is needed to start the trial.</p>
+      </div>
+
+      <div class="faq-card">
+        <h4>What payment methods do you accept?</h4>
+        <p>We accept all major credit cards, debit cards, and PayPal. All payments are safe and secure.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTACT BANNER -->
+  <div class="contact-banner">
+    <div>
+      <h2>Not Sure Which Plan to Choose?</h2>
+      <p>Talk to our team and we will help you pick the right plan for your goals.</p>
+    </div>
+    <button class="btn-dark">Contact Us</button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Sample text. Sport Club 2026.</p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sport Club - Coaches</title>
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background-color: #333333;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .btn-request {
+      background-color: #d4e600;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 25px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background-color: #444444;
+      padding: 80px 60px;
+      text-align: center;
+      color: white;
+    }
+
+    .hero p.eyebrow {
+      font-size: 13px;
+      color: #cccccc;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #d4e600;
+    }
+
+    .hero p.sub {
+      font-size: 15px;
+      color: #cccccc;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* STATS BAR */
+    .stats-bar {
+      background-color: #d4e600;
+      padding: 25px 100px;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+    }
+
+    .stats-bar .stat h3 {
+      font-size: 30px;
+      font-weight: bold;
+      color: #222222;
+      margin-bottom: 4px;
+    }
+
+    .stats-bar .stat p {
+      font-size: 13px;
+      color: #444444;
+    }
+
+    /* COACHES LIST SECTION */
+    .coaches-section {
+      padding: 70px 100px;
+      background-color: white;
+    }
+
+    .coaches-section h2 {
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .coaches-section p.sub {
+      font-size: 15px;
+      color: #555555;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    /* COACH ROW */
+    .coach-row {
+      display: flex;
+      align-items: center;
+      gap: 160px;
+      margin-bottom: 70px;
+      padding-bottom: 70px;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .coach-row:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .coach-row.reverse {
+      flex-direction: row-reverse;
+    }
+
+    /* PHOTO */
+    .coach-photo-wrap {
+      flex-shrink: 0;
+      width: 250px;
+      height: 290px;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .coach-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* INFO */
+    .coach-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .coach-number {
+      font-size: 13px;
+      font-weight: bold;
+      color: #aaaaaa;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+
+    .coach-name {
+      font-size: 30px;
+      font-weight: bold;
+      color: #222222;
+      margin-bottom: 6px;
+    }
+
+    .coach-role {
+      font-size: 14px;
+      color: #d4e600;
+      background-color: #333333;
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .coach-bio {
+      font-size: 15px;
+      color: #555555;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* TAGS */
+    .tags {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      border: 2px solid #333333;
+      border-radius: 25px;
+      padding: 6px 18px;
+      font-size: 13px;
+      background-color: white;
+      color: #333333;
+    }
+
+    .tag.filled {
+      background-color: #333333;
+      color: white;
+    }
+
+    /* COACH DETAILS ROW */
+    .coach-details {
+      display: flex;
+      gap: 30px;
+    }
+
+    .detail-item p.label {
+      font-size: 12px;
+      color: #aaaaaa;
+      margin-bottom: 3px;
+    }
+
+    .detail-item p.value {
+      font-size: 14px;
+      font-weight: bold;
+      color: #222222;
+    }
+
+    /* ALL COACHES GRID */
+    .grid-section {
+      padding: 70px 100px;
+      background-color: #f5f5f5;
+    }
+
+    .grid-section h2 {
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .grid-section p.sub {
+      font-size: 15px;
+      color: #555555;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .coaches-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+    }
+
+    .grid-card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 25px 20px;
+      width: 200px;
+      text-align: center;
+    }
+
+    .grid-card img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 14px;
+    }
+
+    .grid-card h4 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 4px;
+      color: #222222;
+    }
+
+    .grid-card p {
+      font-size: 13px;
+      color: #777777;
+      margin-bottom: 10px;
+    }
+
+    .grid-card span {
+      background-color: #d4e600;
+      color: black;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 4px 14px;
+      border-radius: 20px;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 70px 100px;
+      background-color: white;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .testimonials p.sub {
+      font-size: 15px;
+      color: #555555;
+      margin-bottom: 40px;
+    }
+
+    .testi-row {
+      display: flex;
+      gap: 25px;
+      justify-content: center;
+    }
+
+    .testi-card {
+      background-color: #f5f5f5;
+      border-radius: 15px;
+      padding: 25px;
+      width: 280px;
+      text-align: left;
+    }
+
+    .testi-card p.quote {
+      font-size: 14px;
+      color: #444444;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .testi-bottom {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: #cccccc;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .testi-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testi-bottom h4 {
+      font-size: 14px;
+      font-weight: bold;
+      color: #222222;
+      margin-bottom: 2px;
+    }
+
+    .testi-bottom p {
+      font-size: 12px;
+      color: #777777;
+    }
+
+    .stars {
+      color: #d4e600;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    /* CTA BANNER */
+    .cta-banner {
+      background-color: #d4e600;
+      padding: 50px 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cta-banner h2 {
+      font-size: 28px;
+      font-weight: bold;
+      color: black;
+    }
+
+    .cta-banner p {
+      font-size: 14px;
+      color: #444444;
+      margin-top: 6px;
+    }
+
+    .btn-dark {
+      background-color: #333333;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: #222222;
+      color: #aaaaaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="logo">🎾 Sport Club</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#" style="color:#d4e600;">Coaches</a></li>
+      <li><a href="#">Pricing</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <button class="btn-request">Request a call</button>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="eyebrow">OUR TEAM</p>
+    <h1>Meet Our Expert <span>Coaches</span></h1>
+    <p class="sub">
+      Our coaches are certified professionals with years of experience.
+      They are here to guide, motivate, and push you to your best.
+    </p>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat">
+      <h3>15+</h3>
+      <p>Expert Coaches</p>
+    </div>
+    <div class="stat">
+      <h3>5000+</h3>
+      <p>Athletes Trained</p>
+    </div>
+    <div class="stat">
+      <h3>12</h3>
+      <p>Years of Experience</p>
+    </div>
+    <div class="stat">
+      <h3>98%</h3>
+      <p>Satisfaction Rate</p>
+    </div>
+  </div>
+
+  <!-- FEATURED COACHES -->
+  <div class="coaches-section">
+    <h2>Featured Coaches</h2>
+    <p class="sub">Get to know our top coaches and what they specialize in.</p>
+
+    <!-- Coach 1 -->
+    <div class="coach-row">
+      <div class="coach-photo-wrap">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&q=80" alt="Oliver Bennett" />
+      </div>
+      <div class="coach-info">
+        <p class="coach-number">COACH 01</p>
+        <h2 class="coach-name">Oliver Bennett</h2>
+        <span class="coach-role">Head Tennis Coach</span>
+        <p class="coach-bio">
+          Oliver has over 10 years of experience coaching tennis at a
+          professional level. He has trained athletes from beginners to
+          national level competitors. His coaching style focuses on
+          technique, discipline, and building mental strength.
+        </p>
+        <div class="tags">
+          <span class="tag">Expertise</span>
+          <span class="tag">Motivation</span>
+          <span class="tag">Technique</span>
+        </div>
+        <div class="coach-details">
+          <div class="detail-item">
+            <p class="label">Experience</p>
+            <p class="value">10+ Years</p>
+          </div>
+          <div class="detail-item">
+            <p class="label">Specialty</p>
+            <p class="value">Tennis</p>
+          </div>
+          <div class="detail-item">
+            <p class="label">Athletes Trained</p>
+            <p class="value">500+</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coach 2 -->
+    <div class="coach-row reverse">
+      <div class="coach-photo-wrap">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80" alt="Sophia Collins" />
+      </div>
+      <div class="coach-info">
+        <p class="coach-number">COACH 02</p>
+        <h2 class="coach-name">Sophia Collins</h2>
+        <span class="coach-role">Fitness Trainer</span>
+        <p class="coach-bio">
+          Sophia is a certified fitness trainer who specializes in
+          full body conditioning and lifestyle coaching. She believes
+          in a balanced approach to fitness that combines physical
+          training with mental wellness and healthy habits.
+        </p>
+        <div class="tags">
+          <span class="tag filled">Support</span>
+          <span class="tag filled">Accountability</span>
+          <span class="tag filled">Wellness</span>
+        </div>
+        <div class="coach-details">
+          <div class="detail-item">
+            <p class="label">Experience</p>
+            <p class="value">7+ Years</p>
+          </div>
+          <div class="detail-item">
+            <p class="label">Specialty</p>
+            <p class="value">Fitness</p>
+          </div>
+          <div class="detail-item">
+            <p class="label">Athletes Trained</p>
+            <p class="value">300+</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coach 3 -->
+    <div class="coach-row">
+      <div class="coach-photo-wrap">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&q=80" alt="Ethan Roberts" />
+      </div>
+      <div class="coach-info">
+        <p class="coach-number">COACH 03</p>
+        <h2 class="coach-name">Ethan Roberts</h2>
+        <span class="coach-role">Strength Coach</span>
+        <p class="coach-bio">
+          Ethan is a strength and conditioning expert who helps
+          athletes build power, endurance, and resilience. His
+          programs are designed to match each athlete's individual
+          goals and fitness level, from beginners to advanced.
+        </p>
+        <div class="tags">
+          <span class="tag">Technique</span>
+          <span class="tag">Motivation</span>
+          <span class="tag">Strength</span>
+        </div>
+        <div class="coach-details">
+          <div class="detail-item">
+            <p class="label">Experience</p>
+            <p class="value">8+ Years</p>
+          </div>
+          <div class="detail-item">
+            <p class="label">Specialty</p>
+            <p class="value">Strength</p>
+          </div>
+          <div class="detail-item">
+            <p class="label">Athletes Trained</p>
+            <p class="value">400+</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ALL COACHES GRID -->
+  <div class="grid-section">
+    <h2>All Coaches</h2>
+    <p class="sub">Our full team of professional coaches ready to help you.</p>
+
+    <div class="coaches-grid">
+
+      <div class="grid-card">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300&q=80" alt="Oliver Bennett" />
+        <h4>Oliver Bennett</h4>
+        <p>Head Coach</p>
+        <span>Tennis</span>
+      </div>
+
+      <div class="grid-card">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&q=80" alt="Sophia Collins" />
+        <h4>Sophia Collins</h4>
+        <p>Fitness Trainer</p>
+        <span>Fitness</span>
+      </div>
+
+      <div class="grid-card">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=300&q=80" alt="Ethan Roberts" />
+        <h4>Ethan Roberts</h4>
+        <p>Strength Coach</p>
+        <span>Strength</span>
+      </div>
+
+      <div class="grid-card">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=300&q=80" alt="James Carter" />
+        <h4>James Carter</h4>
+        <p>Cardio Trainer</p>
+        <span>Cardio</span>
+      </div>
+
+      <div class="grid-card">
+        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=300&q=80" alt="Mia Turner" />
+        <h4>Mia Turner</h4>
+        <p>Yoga Coach</p>
+        <span>Yoga</span>
+      </div>
+
+      <div class="grid-card">
+        <img src="https://images.unsplash.com/photo-1546483875-ad9014c88eba?w=300&q=80" alt="Ryan Scott" />
+        <h4>Ryan Scott</h4>
+        <p>Boxing Coach</p>
+        <span>Boxing</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="testimonials">
+    <h2>What Athletes Say</h2>
+    <p class="sub">Hear from real members who trained with our coaches.</p>
+
+    <div class="testi-row">
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">
+          Oliver is an amazing coach. He completely changed my game
+          in just 3 months. I highly recommend him to anyone serious
+          about tennis.
+        </p>
+        <div class="testi-bottom">
+          <div class="testi-avatar">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" />
+          </div>
+          <div>
+            <h4>Mark Johnson</h4>
+            <p>Tennis Player</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">
+          Sophia helped me lose 15kg in 4 months. Her support and
+          structured fitness plan made all the difference. She truly
+          cares about her clients.
+        </p>
+        <div class="testi-bottom">
+          <div class="testi-avatar">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" />
+          </div>
+          <div>
+            <h4>Tina Perry</h4>
+            <p>Fitness Member</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="quote">
+          Ethan's strength program is no joke. I improved my deadlift
+          by 40kg in two months. Best strength coach I have ever
+          worked with.
+        </p>
+        <div class="testi-bottom">
+          <div class="testi-avatar">
+            <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="User" />
+          </div>
+          <div>
+            <h4>Sam Wilson</h4>
+            <p>Strength Athlete</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div>
+      <h2>Ready to Train With Our Coaches?</h2>
+      <p>Book a free session today and find the right coach for your goals.</p>
+    </div>
+    <button class="btn-dark">Book a Session</button>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Sample text. Sport Club 2026.</p>
+  </div>
+
+</body>
+</html>
